@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .data-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="data-container" id="dataContainer">
+        <h1>Data from Blob URL</h1>
+        <pre id="dataOutput"></pre>
+    </div>
+
+    <script>
+        fetch('blob:https://2089731926-atari-embeds.googleusercontent.com/d4cb4566-f47c-4077-9a16-7abb2b84533a')
+      
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('dataOutput').textContent = data;
+            })
+            .catch(error => {
+                document.getElementById('dataOutput').textContent = 'Error fetching data: ' + error;
+            });
+      setInterval(updateResults, 100);
+document.addEventListener("DOMContentLoaded", updateResults);
+    </script>
+</body>
+</html>
